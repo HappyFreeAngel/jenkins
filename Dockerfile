@@ -13,11 +13,12 @@ FROM jenkins/jenkins:latest
 ## deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security stretch/updates main contrib non-free
 
 USER root
-RUN echo "\ndeb http://mirrors.ustc.edu.cn stretch/updates main\n" >> /etc/apt/sources.list \
-&& echo "\ndeb https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch main contrib non-free"  >> /etc/apt/sources.list \
-&& echo "\ndeb https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch-updates main contrib non-free" >> /etc/apt/sources.list \
-&& echo "\ndeb https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch-backports main contrib non-free" >> /etc/apt/sources.list \
-&& echo "\nb https://mirrors.tuna.tsinghua.edu.cn/debian-security stretch/updates main contrib non-free" >> /etc/apt/sources.list \
+RUN apt-get install -y apt-transport-https \
+&&  echo "\ndeb http://mirrors.ustc.edu.cn stretch/updates main\n" > /etc/apt/sources.list \
+&&  echo "\ndeb https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch main contrib non-free"  >> /etc/apt/sources.list \
+&&  echo "\ndeb https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch-updates main contrib non-free" >> /etc/apt/sources.list \
+&&  echo "\ndeb https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch-backports main contrib non-free" >> /etc/apt/sources.list \
+&&  echo "\ndeb https://mirrors.tuna.tsinghua.edu.cn/debian-security stretch/updates main contrib non-free" >> /etc/apt/sources.list \
       && cat /etc/apt/sources.list \
       && apt-get update \
       && apt-get upgrade -y \
