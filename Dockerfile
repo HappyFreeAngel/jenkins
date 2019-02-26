@@ -2,7 +2,7 @@
 FROM jenkins/jenkins:latest
 
 USER root
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories \
+RUN echo "deb mirrors.ustc.edu.cn main" >> /etc/apt/sources.list \
       && apt-get update \
       && apt-get upgrade -y \
       && apt-get install -y apt-utils sudo libltdl-dev sshpass sed vim make \
