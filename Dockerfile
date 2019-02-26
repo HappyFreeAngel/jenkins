@@ -2,7 +2,7 @@
 FROM jenkins/jenkins:latest
 
 USER root
-RUN echo -e "\n-r deb mirrors.ustc.edu.cn main" >> /etc/apt/sources.list \
+RUN echo -e "\n-r deb mirrors.ustc.edu.cn stretch/updates main" >> /etc/apt/sources.list \
       && apt-get update \
       && apt-get upgrade -y \
       && apt-get install -y apt-utils sudo libltdl-dev sshpass sed vim make \
