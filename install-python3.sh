@@ -2,9 +2,9 @@
 
 #step 1 Use the following command to install prerequisites for Python before installing it.
 
-apt-get install -y build-essential checkinstall
-apt-get install -y libreadline-gplv2-dev libncursesw5-dev libssl-dev \
-    libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev
+#apt-get install -y build-essential checkinstall
+#apt-get install -y libreadline-gplv2-dev libncursesw5-dev libssl-dev \
+#    libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev
 #Step 2 – Download Python 3.7
 #Download Python using following command from python official site. You can also download latest version in place of specified below.
 cd /usr/src
