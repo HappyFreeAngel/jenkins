@@ -2,7 +2,7 @@
 FROM jenkins/jenkins:latest
 
 USER root
-RUN echo  "\ndeb mirrors.ustc.edu.cn stretch/updates main\n" >> /etc/apt/sources.list \
+RUN echo  "\ndeb http://mirrors.ustc.edu.cn stretch/updates main\n" >> /etc/apt/sources.list \
       && cat /etc/apt/sources.list \
       && apt-get update \
       && apt-get upgrade -y \
