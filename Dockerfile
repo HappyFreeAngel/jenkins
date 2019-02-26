@@ -5,7 +5,7 @@ USER root
 RUN apt-get update \
       && apt-get upgrade -y \
       && apt-get install -y sudo libltdl-dev \
-      && apt-get install -y sshpass sed vim \
+      && apt-get install -y sshpass sed vim make \
       && rm -rf /var/lib/apt/lists/*
 
 #to do 安装python3 software如果是目录后面需要添加/
