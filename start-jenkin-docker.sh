@@ -17,4 +17,4 @@ docker run  -d  \
 -v `pwd`/jenkins_home:/var/jenkins_home \
 -v /var/run/docker.sock:/var/run/docker.sock \
 -v $(which docker):$(which docker) \
- jenkins/jenkins:20190125
+ jenkins/jenkins:20190226

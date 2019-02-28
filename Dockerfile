@@ -1,7 +1,7 @@
 
 FROM jenkins/jenkins:latest
 
-
+#version: 20190228
 ## 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
 #deb https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch main contrib non-free
 ## deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch main contrib non-free

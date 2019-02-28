@@ -1,0 +1,85 @@
+{
+  "id": "/devops/jenkins",
+  "cmd": null,
+  "cpus": 4,
+  "mem": 8192,
+  "disk": 1,
+  "instances": 1,
+  "acceptedResourceRoles": [
+    "*"
+  ],
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "forcePullImage": false,
+      "image": "jenkins/jenkins:20190226",
+      "parameters": [
+        {
+          "key": "dns",
+          "value": "10.20.5.31"
+        },
+        {
+          "key": "hostname",
+          "value": "jenkins.devops.marathon.mesos"
+        },
+        {
+          "key": "volume-driver",
+          "value": "rexray"
+        },
+        {
+          "key": "volume",
+          "value": "jenkins-home-data:/var/jenkins_home"
+        }
+      ],
+      "privileged": true
+    },
+    "volumes": [
+      {
+        "containerPath": "/var/run/docker.sock",
+        "hostPath": "/var/run/docker.sock",
+        "mode": "RW"
+      },
+      {
+        "containerPath": "/usr/bin/docker",
+        "hostPath": "/usr/bin/docker",
+        "mode": "RO"
+      }
+    ],
+    "portMappings": [
+      {
+        "containerPort": 0,
+        "labels": {},
+        "name": "default",
+        "protocol": "tcp",
+        "servicePort": 10054
+      }
+    ]
+  },
+  "env": {
+    "TZ": "Asia/Shanghai"
+  },
+  "healthChecks": [
+    {
+      "gracePeriodSeconds": 600,
+      "ignoreHttp1xx": false,
+      "intervalSeconds": 60,
+      "maxConsecutiveFailures": 10,
+      "path": "/login",
+      "port": 8080,
+      "protocol": "HTTP",
+      "ipProtocol": "IPv4",
+      "timeoutSeconds": 60,
+      "delaySeconds": 15
+    }
+  ],
+  "labels": {
+    "org.projectcalico.label.role": "frontend"
+  },
+  "networks": [
+    {
+      "name": "frontend",
+      "mode": "container"
+    }
+  ],
+  "portDefinitions": []
+}
