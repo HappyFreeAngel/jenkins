@@ -23,12 +23,10 @@ RUN echo "\ndeb http://mirrors.163.com/debian/ jessie main non-free contrib\n" >
 &&  echo "\ndeb-src http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib"  >> /etc/apt/sources.list \
       && cat /etc/apt/sources.list \
       && apt-get update \
-      && apt-get install -y apt apt-transport-https \
-      && apt-get install -y sudo libltdl-dev sshpass sed vim make \
-      && apt-get install -y build-essential checkinstall libreadline-gplv2-dev libncursesw5-dev libssl-dev \
+      && apt-get -f install -y apt apt-utils apt-transport-https \
+      && apt-get -f install -y sudo libltdl-dev sshpass sed vim make \
+      && apt-get -f install -y build-essential checkinstall libreadline-gplv2-dev libncursesw5-dev libssl-dev \
          libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev \
-         dpkg-dev libbz2-1.0 bzip2-doc libc6 libc-dev-bin libffi6 libgdbm3 libtinfo5 libncursesw5 libtinfo-dev ncurses-bin libtinfo-dev \
-         libsqlite3-0 zlib1g-dev tk8.6-dev tcl-dev \
       && rm -rf /var/lib/apt/lists/*   \
       && apt-get upgrade -y
 
