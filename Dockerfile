@@ -13,11 +13,14 @@ FROM jenkins/jenkins:latest
 ## deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security stretch/updates main contrib non-free
 
 USER root
-RUN echo "\ndeb http://mirrors.ustc.edu.cn stretch/updates main\n" > /etc/apt/sources.list \
-&&  echo "\ndeb https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch main contrib non-free"  >> /etc/apt/sources.list \
-&&  echo "\ndeb https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch-updates main contrib non-free" >> /etc/apt/sources.list \
-&&  echo "\ndeb https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch-backports main contrib non-free" >> /etc/apt/sources.list \
-&&  echo "\ndeb https://mirrors.tuna.tsinghua.edu.cn/debian-security stretch/updates main contrib non-free" >> /etc/apt/sources.list \
+RUN echo "\ndeb http://mirrors.163.com/debian/ jessie main non-free contrib\n" > /etc/apt/sources.list \
+&&  echo "\ndeb http://mirrors.163.com/debian/ jessie-updates main non-free contrib"  >> /etc/apt/sources.list \
+&&  echo "\ndeb http://mirrors.163.com/debian/ jessie-backports main non-free contrib"  >> /etc/apt/sources.list \
+&&  echo "\ndeb-src http://mirrors.163.com/debian/ jessie main non-free contrib"  >> /etc/apt/sources.list \
+&&  echo "\ndeb-src http://mirrors.163.com/debian/ jessie-updates main non-free contrib"  >> /etc/apt/sources.list \
+&&  echo "\ndeb-src http://mirrors.163.com/debian/ jessie-backports main non-free contrib"  >> /etc/apt/sources.list \
+&&  echo "\ndeb http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib"  >> /etc/apt/sources.list \
+&&  echo "\ndeb-src http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib"  >> /etc/apt/sources.list \
       && cat /etc/apt/sources.list \
       && apt-get update \
       && apt-get install -y apt-transport-https \
