@@ -13,19 +13,19 @@ FROM jenkins/jenkins:latest
 ## deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security stretch/updates main contrib non-free
 
 USER root
-RUN apt-get install -y apt-transport-https \
-&&  echo "\ndeb http://mirrors.ustc.edu.cn stretch/updates main\n" > /etc/apt/sources.list \
+RUN echo "\ndeb http://mirrors.ustc.edu.cn stretch/updates main\n" > /etc/apt/sources.list \
 &&  echo "\ndeb https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch main contrib non-free"  >> /etc/apt/sources.list \
 &&  echo "\ndeb https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch-updates main contrib non-free" >> /etc/apt/sources.list \
 &&  echo "\ndeb https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch-backports main contrib non-free" >> /etc/apt/sources.list \
 &&  echo "\ndeb https://mirrors.tuna.tsinghua.edu.cn/debian-security stretch/updates main contrib non-free" >> /etc/apt/sources.list \
       && cat /etc/apt/sources.list \
       && apt-get update \
-      && apt-get upgrade -y \
+      && apt-get install -y apt-transport-https \
       && apt-get install -y apt-utils sudo libltdl-dev sshpass sed vim make \
       && apt-get install -y build-essential checkinstall libreadline-gplv2-dev libncursesw5-dev libssl-dev \
          libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev \
-      && rm -rf /var/lib/apt/lists/*
+      && rm -rf /var/lib/apt/lists/*   \
+      && apt-get upgrade -y
 
 ## 安装python3 ansible software如果是目录后面需要添加/
 ADD install-python3.sh  /software/
