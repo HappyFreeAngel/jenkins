@@ -15,9 +15,10 @@ FROM jenkins/jenkins:latest
 USER root
 RUN  apt-get update \
 &&  apt-get -f install -y apt \
+&& apt-get -f install -y apt-utils \
 && apt-get upgrade -y \
 && apt-get update \
-&&  echo "\ndeb http://mirrors.163.com/debian/ jessie main non-free contrib\n" > /etc/apt/sources.list \
+&&  echo "\ndeb http://mirrors.163.com/debian/ jessie main non-free contrib\n" >> /etc/apt/sources.list \
 &&  echo "\ndeb http://mirrors.163.com/debian/ jessie-updates main non-free contrib"  >> /etc/apt/sources.list \
 &&  echo "\ndeb http://mirrors.163.com/debian/ jessie-backports main non-free contrib"  >> /etc/apt/sources.list \
 &&  echo "\ndeb-src http://mirrors.163.com/debian/ jessie main non-free contrib"  >> /etc/apt/sources.list \
@@ -27,11 +28,9 @@ RUN  apt-get update \
 &&  echo "\ndeb-src http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib"  >> /etc/apt/sources.list \
       && cat /etc/apt/sources.list \
       && apt-get update \
-      && apt-get -f install -y apt \
       && apt-get upgrade -y \
-      && apt-get -f install -y apt-utils \
       && apt-get update \
-      && apt-get -f install -y apt apt-utils apt-transport-https \
+      && apt-get -f install -y apt-utils apt-transport-https \
       && apt-get -f install -y sudo libltdl-dev sshpass sed vim make \
       && apt-get -f install -y build-essential checkinstall libreadline-gplv2-dev libncursesw5-dev libssl-dev \
          libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev \
