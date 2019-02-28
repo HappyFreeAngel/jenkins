@@ -24,6 +24,7 @@ RUN echo "\ndeb http://mirrors.163.com/debian/ jessie main non-free contrib\n" >
       && cat /etc/apt/sources.list \
       && apt-get update \
       && apt-get -f install -y apt \
+      && apt-get upgrade -y \
       && apt-get -f install -y apt-utils \
       && apt-get update \
       && apt-get -f install -y apt apt-utils apt-transport-https \
