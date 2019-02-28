@@ -13,7 +13,11 @@ FROM jenkins/jenkins:latest
 ## deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security stretch/updates main contrib non-free
 
 USER root
-RUN echo "\ndeb http://mirrors.163.com/debian/ jessie main non-free contrib\n" > /etc/apt/sources.list \
+RUN  apt-get update \
+&&  apt-get -f install -y apt \
+&& apt-get upgrade -y \
+&& apt-get update \
+&&  echo "\ndeb http://mirrors.163.com/debian/ jessie main non-free contrib\n" > /etc/apt/sources.list \
 &&  echo "\ndeb http://mirrors.163.com/debian/ jessie-updates main non-free contrib"  >> /etc/apt/sources.list \
 &&  echo "\ndeb http://mirrors.163.com/debian/ jessie-backports main non-free contrib"  >> /etc/apt/sources.list \
 &&  echo "\ndeb-src http://mirrors.163.com/debian/ jessie main non-free contrib"  >> /etc/apt/sources.list \
