@@ -35,7 +35,7 @@ RUN  apt-get update \
       && apt-get -f install -y build-essential checkinstall libreadline-gplv2-dev libncursesw5-dev libssl-dev \
          libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev \
       && apt-get upgrade -y \
-      && rm -rf /var/lib/apt/lists/* 
+      && rm -rf /var/lib/apt/lists/*
 
 ## 安装python3 ansible software如果是目录后面需要添加/
 ADD install-python3.sh  /software/
