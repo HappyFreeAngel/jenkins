@@ -1,8 +1,8 @@
 #!/bin/bash
 #虚拟环境及其激活和正确的使用方式:
-ANSIBLE_VERSION="2.6.10"
+ANSIBLE_VERSION="2.6.10" #2.7.8
 PYTHON_VERSION="3.7"
-mkdir ansible2.6.10_python3.7
+mkdir ansible${ANSIBLE_VERSION}_python${PYTHON_VERSION}
 cd ansible${ANSIBLE_VERSION}_python${PYTHON_VERSION}
 #easy_install pip
 

@@ -42,8 +42,10 @@ ADD install-python3.sh  /software/
 ADD install-ansible.sh  /software/
 RUN chmod +x /software/install-python3.sh && chmod +x /software/install-ansible.sh \
   && /software/install-python3.sh \
-  && /software/install-ansible.sh
+  && /software/install-ansible.sh \
+  && pip install --user jenkins-job-builder
 
+#export PATH=$PATH:/var/jenkins_home/.local/bin
 
 RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
 
