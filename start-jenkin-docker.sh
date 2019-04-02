@@ -13,8 +13,7 @@ docker run  -d  \
 --name  jenkins2 \
 --restart always \
 -p 8080:8080 -p 50000:50000 \
--v /etc/localtime:/etc/localtime \
 -v `pwd`/jenkins_home:/var/jenkins_home \
 -v /var/run/docker.sock:/var/run/docker.sock \
 -v $(which docker):$(which docker) \
- jenkins/jenkins:20190226
+ jenkins/jenkins:lts-alpine-1.0.0

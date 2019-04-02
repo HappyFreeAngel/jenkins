@@ -1,0 +1,5 @@
+/software/*.tgz
+/software/*.zip
+/software/*.tar.gz
+/jenkins_home/*.*
+/jenkins_home/*

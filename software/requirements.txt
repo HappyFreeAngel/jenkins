@@ -1,0 +1,13 @@
+requests
+PyVmomi
+dnspython
+#pip requests
+#pip install PyVmomi
+
+
+#模块:vmware_guest
+#python >= 2.6
+#PyVmomi
+
+#模块 nsupdate
+#需要按照dnspython
