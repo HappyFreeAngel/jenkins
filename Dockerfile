@@ -45,6 +45,7 @@ RUN chmod +x /software/install-python3.sh && chmod +x /software/install-ansible.
   && /software/install-ansible.sh \
   && pip install --user jenkins-job-builder
 
+RUN apt autoremove &&  apt clean
 #export PATH=$PATH:/var/jenkins_home/.local/bin
 
 RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
