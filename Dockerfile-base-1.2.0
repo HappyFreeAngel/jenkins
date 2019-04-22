@@ -1,7 +1,8 @@
 FROM jenkins/jenkins:lts-alpine
 #这是基础镜像,包含了常见的工具集. 2019.04.22
 
-RUN sudo sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
+USER root
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
 ADD software/starter.sh  /devops/
 ENV TZ='Asia/Shanghai'
 
