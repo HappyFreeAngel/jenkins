@@ -1,7 +1,7 @@
 FROM jenkins/jenkins:lts-alpine
 #这是基础镜像,包含了常见的工具集. 2019.04.22
-##FROM openjdk:8u191-jdk-alpine3.8
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
+
+RUN sudo sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
 ADD software/starter.sh  /devops/
 ENV TZ='Asia/Shanghai'
 
@@ -264,12 +264,9 @@ RUN apk add docker --no-cache openrc python-dev libffi-dev openssl-dev gcc libc-
 #安装builder工具包
 ADD  software/builder.tgz /devops/tools/
 
-
-##?
 RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
 
 #ENTRYPOINT  ["/server/starter.sh", "-D", "FOREGROUND"]
-
 #USER jenkins
 
 #bugfix 覆盖原来的配置.
