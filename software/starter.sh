@@ -107,12 +107,9 @@ then
     cd ${app_foldername};pwd;
     chmod +x run.sh
     ./run.sh
-else
-     echo "启动默认nginx进程..."
-     nginx -g 'daemon off;'
-#CMD ["nginx", "-g", "daemon off;"]
 fi
 
-
+echo "切换到jenkins用户执行jenkins"
+su jenkins
 tini -- /usr/local/bin/jenkins.sh
 #ENTRYPOINT ["tini", "--", "/usr/local/bin/jenkins.sh"]

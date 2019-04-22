@@ -31,5 +31,11 @@ if [[ ! -n "$1" ]]; then
      exit 1
 fi
 
+cp start-jenkins-docker.sh.j2 start-jenkins-docker.sh
+OLD_VERSION="your_build_version"
+NEW_VERSION=$1
+
+sed -i '' -e "s|$OLD_VERSION|$NEW_VERSION|g" start-jenkins-docker.sh
+chmod +x start-jenkins-docker.sh
 
 sudo docker build -t jenkins/jenkins:$1  .  --no-cache=true

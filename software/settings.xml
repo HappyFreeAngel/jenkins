@@ -53,7 +53,7 @@ under the License.
   <localRepository>/path/to/local/repo</localRepository>
   -->
   
-  <localRepository>/devops/repository/maven</localRepository>
+  <localRepository>/var/jenkins_home/repository/maven</localRepository>
 
   <!-- interactiveMode
    | This will determine whether maven prompts you when it needs input. If set to false,
