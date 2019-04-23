@@ -39,9 +39,9 @@ VOLUME /devops/repository/maven
 VOLUME /server
 
 #覆盖掉
-ADD  software/builder.tgz /devops/tools/
-RUN cp /devops/software/settings.xml /devops/tools/maven/conf/
-ADD software/tools-env.sh /etc/profile.d/
+#ADD  tools/builder.tgz /devops/tools/
+#RUN cp /devops/software/settings.xml /devops/tools/maven/conf/
+#ADD tools/tools-env.sh /etc/profile.d/
 
 #各种语言的PATH环境变量
 #ENV JAVA_HOME
@@ -262,15 +262,14 @@ RUN apk add docker --no-cache openrc python-dev libffi-dev openssl-dev gcc libc-
 #rc-update add docker boot
 #service docker start
 
-#安装builder工具包
-ADD  tools/builder.tgz /devops/tools/
-
 RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
 
 #ENTRYPOINT  ["/server/starter.sh", "-D", "FOREGROUND"]
 #USER jenkins
 
-#bugfix 覆盖原来的配置.
+#覆盖原来的配置,这是经常更新的部分.
+#安装builder工具包
+ADD  tools/builder.tgz /devops/tools/
 ADD software/settings.xml  /devops/tools/maven/conf/
 #更改默认的插件下载地址
 ADD software/hudson.model.UpdateCenter.xml  /var/jenkins_home/
