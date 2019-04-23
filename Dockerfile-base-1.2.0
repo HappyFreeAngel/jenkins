@@ -247,7 +247,6 @@ RUN apk add --no-cache --virtual .build-deps-yarn curl gnupg tar \
   && apk del .build-deps-yarn
 
 
-
 #安装docker工具
 RUN apk add docker --no-cache openrc python-dev libffi-dev openssl-dev gcc libc-dev make \
 && pip install docker-compose \
@@ -263,7 +262,8 @@ RUN apk add docker --no-cache openrc python-dev libffi-dev openssl-dev gcc libc-
 #service docker start
 
 #安装builder工具包
-ADD  software/builder.tgz /devops/tools/
+#git clone https://github.com/HappyFreeAngel/builder.git  /devops/tools/builder
+ADD  tools/builder.tgz /devops/tools/
 
 RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
 
@@ -274,6 +274,7 @@ RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
 ADD software/settings.xml  /devops/tools/maven/conf/
 #更改默认的插件下载地址
 ADD software/hudson.model.UpdateCenter.xml  /var/jenkins_home/
+RUN ln -s /devops/tools /var/jenkins_home/tools
 
 USER root
 ENTRYPOINT  ["/server/starter.sh", "-D", "FOREGROUND"]
